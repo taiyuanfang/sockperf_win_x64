@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.10)
 
 project(SOCKPERF)
 
@@ -47,3 +47,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
     sockperf_static
 )
 
+set(TARGET_NAME datetime)
+add_executable(${TARGET_NAME}
+    datetime.c
+)

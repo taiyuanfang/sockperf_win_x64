@@ -19,20 +19,13 @@ echo arg_count    : %arg_count%
 set /a count=1
 
 :loop
-    set pad=000000%count%
-    set seq=%pad:~-6%
-    rem echo %seq%
+    set pad_zero=000000%count%
+    set seq=%pad_zero:~-6%
+    rem echo seq=%seq%
 
-    set now=%time: =0%
-    rem echo %now%
-    set time_h=%now:~0,2%
-    set time_m=%now:~3,2%
-    set time_s=%now:~6,2%
-
-    set date_y=%date:~6,4%
-    set date_m=%date:~0,2%
-    set date_d=%date:~3,2%
-    set filename=%date_y%%date_m%%date_d%_%time_h%%time_m%%time_s%_%arg_msg_size%_%seq%.csv
+    for /f %%i in ('bin\datetime.exe') do set datetime_str=%%i
+    rem echo datetime_str=%datetime_str%
+    set filename=%datetime_str%_%arg_msg_size%_%seq%.csv
     rem echo filename=%filename%
 
     @echo on
